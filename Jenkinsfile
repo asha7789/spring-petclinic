@@ -1,6 +1,7 @@
 pipeline {
     agent { label 'MAVEN' }
-    options (time: 30, unit: 'MINUTES')
+    options { 
+        timeout(time: 30, unit: 'MINUTES') 
     }
     triggers {
         pollSCM('* * * * *')
@@ -18,4 +19,5 @@ pipeline {
             }
         }
     }
+    
 }
