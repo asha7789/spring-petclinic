@@ -1,0 +1,20 @@
+pipeline {
+    agent {label 'MAVEN'}
+    options (time:30, unit: 'MINUTES')
+}
+triggers {
+    pollSCM('* * * * *')
+}
+stages {
+    stage('git') {
+        steps {
+            git branch: 'dev', url: 'https://github.com/asha7789/spring-petclinic.git',
+            branch: 'dev'
+        }
+    }
+    stage('build') {
+        steps {
+            sh 'mvn clean package'
+        }
+    }
+}
