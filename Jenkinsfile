@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'MAVEN'}
+    agent { label 'MAVEN' }
     options (time:30, unit: 'MINUTES')
 }
 triggers {
@@ -8,7 +8,7 @@ triggers {
 stages {
     stage('git') {
         steps {
-            git branch: 'dev', url: 'https://github.com/asha7789/spring-petclinic.git',
+            git url: 'https://github.com/asha7789/spring-petclinic.git',
             branch: 'dev'
         }
     }
