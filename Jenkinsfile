@@ -1,5 +1,8 @@
 pipeline {
     agent { label 'MAVEN' }
+    tools { 
+        maven 'Maven 3.9.5'
+    }
     options { 
         timeout(time: 30, unit: 'MINUTES') 
     }
@@ -16,8 +19,10 @@ pipeline {
         stage('build') {
             steps {
                 sh 'mvn clean package'
+                archiveArtifacts artifacts: '**/spring-petclinic-*.jar'
+                junit testResults: '**/TEST-*.xml'
             }
         }
     }
-    
+
 }
