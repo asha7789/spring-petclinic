@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'MAVEN' }
     tools { 
-        maven 'Maven 3.9.5'
+        maven 'MAVEN_3.9.5'
     }
     options { 
         timeout(time: 30, unit: 'MINUTES') 
